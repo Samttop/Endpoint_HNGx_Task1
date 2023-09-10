@@ -11,10 +11,10 @@ def run():
     try:
         #JSON output at endpoint
         output = {
-            "slack_name": request.args.get('slack_name', 'Slimpriest'),
+            "slack_name": request.args.get('slack_name', 'input_name'),
             "current_day": datetime.date.today().strftime('%A'),
-            "utc_time": datetime.datetime.now().strftime('%Y-%m-%dT%H:%M:%Sz'),
-            "track": request.args.get('track', 'Backend Developer'),
+            "utc_time": datetime.datetime.now().strftime('%Y-%m-%dT%H:%M:%SZ'),
+            "track": request.args.get('track', 'input_track'),
             "github_file_url": "https://github.com/Samttop/Endpoint_HNGx_Task1/blob/main/EndpointTask1.py",
             "github_repo_url": "https://github.com/Samttop/Endpoint_HNGx_Task1",
             "status_code": "200"
