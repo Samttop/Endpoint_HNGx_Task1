@@ -14,8 +14,8 @@ def run():
         track = request.args.get('track', 'Backend Developer')
         current_day =  datetime.date.today().strftime('%A')
         utc_time = datetime.datetime.now().strftime('%Y-%m-%dT%H:%M:%Sz')
-        #github_file =
-        #github_repo =     
+        github_file = "https://github.com/Samttop/Endpoint_HNGx_Task1/blob/main/EndpointTask1.py"
+        github_repo = "https://github.com/Samttop/Endpoint_HNGx_Task1"  
         
         #JSON output at endpoint
         output = {
@@ -23,8 +23,8 @@ def run():
             "current_day": current_day,
             "utc_time": utc_time,
             "track": track,
-            "github_file_url": "URL to be inserted later",
-            "github_repo_url": "URL to be inserted later",
+            "github_file_url": github_file,
+            "github_repo_url": github_repo,
             "status_code": "200"
         }
 
