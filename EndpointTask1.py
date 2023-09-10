@@ -6,25 +6,17 @@ import json
 
 app = Flask(__name__)
 
-@app.route('/', methods=['GET']) #Root URL is the first page
+@app.route('/', methods=['GET'])
 def run():
-    try: 
-        #Some variables that go into the JSON output
-        slack_name = request.args.get('candidate', 'Slimpriest')
-        track = request.args.get('track', 'Backend Developer')
-        current_day =  datetime.date.today().strftime('%A')
-        utc_time = datetime.datetime.now().strftime('%Y-%m-%dT%H:%M:%Sz')
-        github_file = "https://github.com/Samttop/Endpoint_HNGx_Task1/blob/main/EndpointTask1.py"
-        github_repo = "https://github.com/Samttop/Endpoint_HNGx_Task1"  
-        
+    try:
         #JSON output at endpoint
         output = {
-            "slack_name": slack_name,
-            "current_day": current_day,
-            "utc_time": utc_time,
-            "track": track,
-            "github_file_url": github_file,
-            "github_repo_url": github_repo,
+            "slack_name": request.args.get('slack_name', 'Slimpriest'),
+            "current_day": datetime.date.today().strftime('%A'),
+            "utc_time": datetime.datetime.now().strftime('%Y-%m-%dT%H:%M:%Sz'),
+            "track": request.args.get('track', 'Backend Developer'),
+            "github_file_url": "https://github.com/Samttop/Endpoint_HNGx_Task1/blob/main/EndpointTask1.py",
+            "github_repo_url": "https://github.com/Samttop/Endpoint_HNGx_Task1",
             "status_code": "200"
         }
 
@@ -32,6 +24,3 @@ def run():
 
     except Exception as e:
         return jsonify({"error": str(e)}), 400 #Error Handling
-
-if __name__ == '__main__':
-    app.run(debug=True)
